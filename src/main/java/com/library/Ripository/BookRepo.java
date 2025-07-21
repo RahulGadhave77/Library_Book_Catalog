@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 
 import com.library.Utility.LibraryUtility;
 import com.library.entity.BookDetail;
+import com.library.entity.BookDetails;
 
 public class BookRepo {
 	Scanner sc = new Scanner(System.in);
@@ -95,4 +96,51 @@ public class BookRepo {
 		transaction.commit();
 		session.close();
 	}
+	public void addBookWithDetails() {
+
+		BookDetail book = new BookDetail();
+
+		System.out.println("Enter a Book title");
+		String bookTitle = sc.next();
+		book.setBookTitle(bookTitle);
+
+		System.out.println("Enter the Author");
+		String bookAuthor = sc.next();
+		book.setBookAuthor(bookAuthor);
+
+		System.out.println("Enter the book isbn ");
+		String bookISBN = sc.next();
+		book.setBookISBN(bookISBN);
+
+		System.out.println("Enter Available copies");
+		int bookAvailableCopis = sc.nextInt();
+		book.setBookAvailableCopies(bookAvailableCopis);
+		
+		BookDetails bookDetails = new BookDetails();
+		
+		System.out.println("Enter book publisher");
+		String pub = sc.next();
+		bookDetails.setPublisher(pub);
+		
+		System.out.println("enter book published year");
+		int year = sc.nextInt();
+		bookDetails.setPublishedYear(year);
+		
+		System.out.println("Enter book genre ");
+		String gen = sc.next();
+		bookDetails.setGenre(gen);
+		
+		book.setBookDetails(bookDetails);
+
+		SessionFactory factory = LibraryUtility.getfactory();
+		Session session = factory.openSession();
+		Transaction transaction = session.beginTransaction();
+
+		session.persist(book);
+
+		transaction.commit();
+		session.close();
+	}
+	
+	
 }

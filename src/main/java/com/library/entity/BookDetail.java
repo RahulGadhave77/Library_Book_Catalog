@@ -1,9 +1,12 @@
 package com.library.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +24,10 @@ public class BookDetail {
 	private String BookISBN;
 	
 	private int bookAvailableCopies;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "book_id")
+	private BookDetails bookDetails;
 
 	public int getBookId() {
 		return bookId;
@@ -62,10 +69,19 @@ public class BookDetail {
 		this.bookAvailableCopies = bookAvailableCopies;
 	}
 
+	public BookDetails getBookDetails() {
+		return bookDetails;
+	}
+
+	public void setBookDetails(BookDetails bookDetails) {
+		this.bookDetails = bookDetails;
+	}
+
 	@Override
 	public String toString() {
-		return "BookDetail [bookId=" + bookId + ", bookTitle=" + bookTitle + ", BookAuthor=" + bookAuthor
-				+ ", BookISBN=" + BookISBN + ", bookAvailableCopies=" + bookAvailableCopies + "]";
+		return "BookDetail [bookId=" + bookId + ", bookTitle=" + bookTitle + ", bookAuthor=" + bookAuthor
+				+ ", BookISBN=" + BookISBN + ", bookAvailableCopies=" + bookAvailableCopies + ", bookDetails="
+				+ bookDetails + "]";
 	}
 	
 	

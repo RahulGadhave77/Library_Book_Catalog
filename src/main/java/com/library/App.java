@@ -17,6 +17,9 @@ public class App {
 		System.out.println("2. Get a book Detail ");
 		System.out.println("3.update Available Copies ");
 		System.out.println("4.delete a book  ");
+		
+		System.out.println("press 5  add book with bookdetails");
+		
 		Scanner sc = new Scanner(System.in);
 		int opration = sc.nextInt();
 
@@ -32,6 +35,10 @@ public class App {
 		case 4:
 			book.deleteBook();
 			break;
+		case 5:
+			book.addBookWithDetails();
+			break;
+			
 			default: System.out.println("Enter Valid opration");
 		}
 

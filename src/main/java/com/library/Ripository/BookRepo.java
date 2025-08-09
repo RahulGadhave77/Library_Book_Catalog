@@ -81,6 +81,7 @@ public class BookRepo {
 		session.close();
 	}
 
+	//delete data to database from cansole with the help of scanner
 	public void deleteBook() {
 		SessionFactory factory = LibraryUtility.getfactory();
 		Session session = factory.openSession();
@@ -97,6 +98,7 @@ public class BookRepo {
 		transaction.commit();
 		session.close();
 	}
+	
 	public void addBookWithDetails() {
 
 		BookDetail book = new BookDetail();

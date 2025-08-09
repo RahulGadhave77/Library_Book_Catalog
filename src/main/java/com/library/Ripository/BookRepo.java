@@ -15,6 +15,7 @@ import com.library.entity.BookDetails;
 public class BookRepo {
 	Scanner sc = new Scanner(System.in);
 
+	//post data book to database
 	public void addBook() {
 
 		BookDetail book = new BookDetail();

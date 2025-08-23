@@ -99,7 +99,6 @@ public class BookRepo {
 		session.close();
 	}
 	
-	//add book with details
 	public void addBookWithDetails() {
 
 		BookDetail book = new BookDetail();
